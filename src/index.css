@@ -1,1 +1,7 @@
 @import "tailwindcss";
+@theme {
+  --color-primary: oklch(0.72 0.11 178);
+
+
+  --spacing: 5px; 
+}

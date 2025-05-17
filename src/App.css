@@ -1,0 +1,7 @@
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1.25rem /* 20px */;
+    padding-left: 1.25rem /* 20px */;
+}
