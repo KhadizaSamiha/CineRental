@@ -7,7 +7,7 @@ import Delete from "../../assets/delete.svg";
 import { MovieContext } from "../../context";
 import { getImgUrl } from "../../utils/cine-utils";
 
-export default function CartDetails({ onClose }) {
+export default function CartDetails({ onClose , darkMode}) {
   const { cartData, setCartData } = useContext(MovieContext);
 
   const handleDeleteCart = (event, item) => {
@@ -19,7 +19,7 @@ export default function CartDetails({ onClose }) {
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[790px] p-4 max-h-[90vh] overflow-auto">
-        <div className="bg-white shadow-md dark:bg-[#12141D] rounded-2xl overflow-hidden p-5 md:p-9">
+        <div className={`${darkMode ? "bg-background text-white" : "bg-white "} shadow-md rounded-2xl overflow-hidden p-5 md:p-9`}>
           <h2 className="text-2xl lg:text-[30px] mb-10 font-bold">
             Your Carts
           </h2>

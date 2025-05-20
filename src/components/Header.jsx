@@ -1,21 +1,23 @@
 import Logo from "../assets/logo.svg";
 import RingIcon from "../assets/ring.svg";
 import MoonIcon from "../assets/icons/moon.svg";
+import SunIcon from "../assets/icons/sun.svg";
 import ShoppingCartIcon from "../assets/shoppingCart.svg";
 import { useContext, useState } from "react";
 import CartDetails from "../components/cine/CartDetails";
-import { MovieContext } from "../context";
+import { MovieContext, ThemeContext } from "../context";
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const { cartData } = useContext(MovieContext);
+  const { darkMode , setDarkMode } = useContext(ThemeContext);
 
   const handleCartShow = () => {
     setShowCart(!showCart);
   };
   return (
     <header>
-      {showCart && <CartDetails onClose={() => setShowCart(false)} />}
+      {showCart && <CartDetails onClose={() => setShowCart(false)} darkMode={darkMode} />}
       <nav className="container flex items-center justify-between space-x-10 py-6">
         <a href="index.html">
           <img src={Logo} width="139" height="26" alt="" />
@@ -34,8 +36,9 @@ const Header = () => {
             <a
               className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
               href="#"
+              onClick={() => setDarkMode(!darkMode)}
             >
-              <img src={MoonIcon} width="24" height="24" alt="" />
+              <img src={darkMode ? SunIcon : MoonIcon} width="24" height="24" alt="" />
             </a>
           </li>
           <li>
