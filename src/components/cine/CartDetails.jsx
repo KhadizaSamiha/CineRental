@@ -8,9 +8,14 @@ import { MovieContext } from "../../context";
 import { getImgUrl } from "../../utils/cine-utils";
 
 export default function CartDetails({ onClose }) {
-  const { cartData } = useContext(MovieContext);
+  const { cartData, setCartData } = useContext(MovieContext);
 
+  const handleDeleteCart = (event, item) => {
+    event.stopPropagation();
 
+    const filteredItem = cartData.filter((cartItem) => cartItem.id !== item.id);
+    setCartData([...filteredItem]);
+  };
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] sm:max-w-[600px] lg:max-w-[790px] p-4 max-h-[90vh] overflow-auto">
@@ -49,7 +54,7 @@ export default function CartDetails({ onClose }) {
                     <div className="flex justify-between gap-4 items-center">
                       <button
                         className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white"
-                        // onClick={() => handleDeleteCart(event, item)}
+                        onClick={() => handleDeleteCart(event, item)}
                       >
                         <img className="w-5 h-5" src={Delete} alt="delete" />
                         <span className="max-md:hidden">Remove</span>

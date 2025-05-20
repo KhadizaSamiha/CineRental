@@ -7,11 +7,11 @@ import { MovieContext } from "../../context";
 const MovieCard = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const { cartData, setCartData } = useContext(MovieContext);
+  const { setCartData } = useContext(MovieContext);
 
   const handleAddToCart = (event, movie) => {
     event.stopPropagation();
-    
+
     setCartData((prev) => {
       const found = prev.find((item) => item.id === movie.id);
       if (!found) {
